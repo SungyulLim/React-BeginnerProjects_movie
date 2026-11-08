@@ -95,7 +95,6 @@ async function loadPopularMovies() {
 ![UI/Data 변경 후 화면](<./05-movie_search_engiene/capture/ui 수정 화면.png>)
 
 ## Deployment
-
-
+- Vercel URL : https://react-beginner-projects-movie.vercel.app/Home
 
 ## Weekly Review
