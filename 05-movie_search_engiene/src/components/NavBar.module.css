@@ -25,27 +25,27 @@
   z-index: 1000;
   min-height: 68px;
   border-bottom: 1px solid rgba(153, 226, 201, 0.18);
-  background: rgba(8, 18, 23, 0.86) !important;
+  background: #172554 !important;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(18px);
 }
 
 .name {
-  color: #f2f7f3 !important;
+  color: #ffffff !important;
   font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: 0.02em;
 }
 
 .navbar_nav :global(.nav-link) {
-  color: #a9beb9 !important;
+  color: #ffffff !important;
   font-weight: 600;
   transition: color 160ms ease;
 }
 
 .navbar_nav :global(.nav-link:hover),
 .navbar_nav :global(.nav-link.active) {
-  color: #9de2c4 !important;
+  color: #c4b5fd !important;
 }
 
 .bg_body_tertiary :global(.navbar-toggler) {
