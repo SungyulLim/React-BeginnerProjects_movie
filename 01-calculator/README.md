@@ -68,8 +68,19 @@ async function loadPopularMovies() {
 ## Customizing
 1. Text: 서비스 이름과 검색창 한국어 적용
 - NavBar.jsx: MovieS → 무비픽, Home → 홈, Favourites → 즐겨찾기
-// 기존 사진 추가
+
+![기존화면(text)](05-movie_search_engiene/capture/text 기존 화면.png)
 // 바뀐 사진 추가
+
+2. Style: 상단 메뉴 색상 변경
+- NavBar.module.css 
+- 배경색: 남색 #172554
+- 글자색: 흰색 #FFFFFF
+- 링크에 마우스를 올렸을 때: 연보라색 #C4B5FD
+
+
+
+
 
 
 ## Deployment
