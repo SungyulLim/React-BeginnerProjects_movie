@@ -8,7 +8,7 @@ function NavBar({loadPopularMovies}) {
         <Link className={`navbar-brand ${styles.name}`} to="/Home" onClick={()=>{
           loadPopularMovies();
         }}>
-          MovieS
+          영화 관리 프로그램.
         </Link>
         <button
           className="navbar-toggler"
@@ -27,12 +27,12 @@ function NavBar({loadPopularMovies}) {
               <Link className="nav-link active" aria-current="page" to="/Home" onClick={()=>{
                 loadPopularMovies();
               }}>
-                Home
+                홈
               </Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/favourites">
-                Favourites
+                즐겨찾기
               </Link>
             </li>
           </ul>
