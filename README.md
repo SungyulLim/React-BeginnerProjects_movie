@@ -1,84 +1,101 @@
-# React Beginner Projects
+# 10주차 과제 (영화 관리 시스템) 22200619 임성열 
 
-A collection of small React applications built while learning React, component design, state management, forms, API requests, routing, and shared application state.
+## 9개의 파일중에서 5번 영화 관리 프로그램 선택
 
-All projects use [Vite](https://vite.dev/) for local development and production builds. Each project is a separate application with its own `package.json` and dependencies.
+## Project Information
+### 선택 이유
+- 해당 웹 페이지를 통해서 내가 관심있는 영화를 찾아보고 내가 좋아하는 영화를 즐겨찾기 해서 한번에 정리할 수 있다는 점에 흥미가 있어서 이 주제를 선정하게 됨.
 
-## Projects
+### 주요 기능 3가지
+1. 영화 목록 조회 및 검색
+- 영화 목록을 조회하고 검색 가능
 
-| Project                                             | What I practiced                                                                                               |
-| --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| [01 Calculator](./01-calculator)                    | Component composition, `useState`, click handlers, and conditional logic                                       |
-| [02 Todo App](./02-todo_app)                        | Forms, lists, controlled state, and reusable components                                                        |
-| [03 Weather App](./03-weather_app)                  | `useEffect`, asynchronous requests, geocoding, and API data                                                    |
-| [04 Simple Social Media](./04-simple_social_media)  | Context API, `useReducer`, forms with refs, and shared state                                                   |
-| [05 Movie Search Engine](./05-movie_search_engiene) | API integration, loading states, React Router, Context API, and CSS Modules                                    |
-| [06 Memory Card Game](./06-memory-card-game)        | State-driven game logic, shuffle logic, match detection, score tracking, and win state UI                      |
-| [07 Music Player](./07-music_player)                | HTML audio playback, Context API, custom hooks, range inputs, routing, and favourites                          |
-| [08 Crypto Website](./08-CryptoWebsite)             | CoinPaprika API data, search, sorting, responsive layouts, dynamic routes, and Recharts                        |
-| [09 EMS](./09-EMS)                                  | Authentication, role-based dashboards, task assignment, employee task completion, and localStorage persistence |
+2. 영화 상세 정보 확인
+- 영화 카드를 선택하면 간단 줄거리, 장르, 상영시간, 평점등을 확인 가능
 
-The projects become progressively more involved, so they can be explored in order or opened independently.
+3. 즐겨찾기
+- 관심있는 영화를 즐겨찾기를 통해서 한 곳에 모아둘 수 있음
+## Installation
 
-## Requirements
+1. git clone https://github.com/Dipesh-Katuwal/React-BeginnerProjects.git
 
-- Node.js 18 or newer
-- npm
-- A modern web browser
+2. cd React-BeginnerProjects/05-movie_search_engiene
 
-## Run a project
+3. npm install
 
-Open a terminal in a project directory, install its dependencies, and start Vite:
+4. npm run dev
 
-```bash
-cd 01-calculator
-npm install
-npm run dev
+
+## Source Code Exploration
+
+### Project Structure: 주요 파일 2개의 역할
+- main.jsx : App을 화면에 렌더링하고, FavouriteProvider로 감싸 앱 전체에서 즐겨찾기 상태를 공유할 수 있도록 한다.
+
+- App.jsx : 영화 목록, 검색어, 로딩 상태를 관리한다. API를 호출해 영화 데이터를 가져오고, 홈·즐겨찾기·영화 상세 페이지의 경로를 설정한다.
+
+### React Component: 주요 컴포넌트 1~2개의 역할
+#### InputField — 검색어 입력
+
+- src/components/InputField.jsx는 검색창과 검색 버튼을 표시한다. 사용자가 검색어를 입력하고 검색 버튼을 누르거나 Enter 키를 누르면, props로 전달받은 setSearch를 호출해 상위 컴포넌트의 검색어 상태를 변경한다.
+
+#### MovieCard — 영화 카드 표시
+
+- src/components/MovieCard.jsx는 props로 받은 movie 데이터를 이용해 영화의 포스터, 제목, 개봉일, 평점을 표시한다. 카드를 클릭하면 해당 영화의 상세 페이지로 이동하며, 카드에 포함된 즐겨찾기 버튼으로 관심 영화를 추가하거나 삭제할 수 있다.
+
+### Code Analysis: 코드 1개(약 5~15줄)를 선택하여 동작 원리 설명
+
+```
+async function loadPopularMovies() {
+  setLoading(true);
+  try {
+    const popularMovies = await getPopularMovies();
+    setMovies(popularMovies);
+  } catch (error) {
+    setError(error);
+  } finally {
+    setLoading(false);
+  }
+}
 ```
 
-Vite will print a local URL, normally `http://localhost:5173`. Stop the server with `Ctrl+C`.
+1. setLoading(true)로 데이터를 불러오는 중임을 표시한다.
+2. getPopularMovies()를 호출하고, await로 영화 데이터를 받아올 때까지 기다린다.
+3. 받아온 데이터를 setMovies()로 저장한다. 상태가 바뀌면 React가 관련 화면을 다시 렌더링해 영화 목록을 보여준다.
+4. 오류가 발생하면 catch에서 오류를 받아 상태에 저장한다.
+5. finally에서는 성공 여부와 관계없이 setLoading(false)를 실행해 로딩을 종료한다.
 
-Replace `01-calculator` with any project directory from the table above.
 
-## Common commands
+## Customizing
+1. Text: 서비스 이름과 검색창 한국어 적용
+- NavBar.jsx: MovieS → 무비픽, Home → 홈, Favourites → 즐겨찾기
 
-Run these commands inside an individual project:
+![Text 변경 전 화면](<../05-movie_search_engiene/capture/text 기존 화면.png>)
 
-```bash
-npm run dev       # Start the development server
-npm run build     # Create a production build
-npm run preview   # Preview the production build locally
-npm run lint      # Run the project's configured linter
-```
+![Text 변경 후 화면](<../05-movie_search_engiene/capture/text 수정 화면.png>)
 
-## Learning goals
+2. Style — 상단 메뉴 색상 변경
+- 수정 파일: src/components/NavBar.module.css
+- 배경색: 어두운 반투명 배경 → 남색 #172554
+- 서비스 이름 글자색: #f2f7f3 → 흰색 #FFFFFF
+- 메뉴 기본 글자색: 회녹색 #a9beb9 → 검은색 black
+- 메뉴 강조색: 민트색 #9de2c4 → 연보라색 #c4b5fd
+- 메뉴에 마우스를 올리면 연보라색으로 표시되며, 홈 메뉴는 active 클래스가 있어 기본 상태에서도 연보라색으로 표시됨.
 
-- Break a user interface into focused React components.
-- Pass data and event handlers through props.
-- Manage local state with React hooks.
-- Render lists and handle user input.
-- Fetch and display data from external APIs.
-- Share state with Context API and reducers.
-- Add client-side pages with React Router.
-- Build and style applications with Bootstrap and CSS Modules.
-- Create a small interactive game using state, matching logic, and game-over UI.
-- Control local audio with the HTML audio element and React refs.
-- Build a music library with playback controls, progress tracking, volume, and favourites.
-- Build a cryptocurrency dashboard with search, sorting, grid/list views, and responsive cards.
-- Fetch coin metadata and seven-day historical prices from an external API.
-- Render responsive data visualizations with Recharts.
-- Build a simple employee management system with signup/login, role-based authorization, and task workflows.
-- Manage shared application state with Context API while persisting demo data in localStorage.
+![Style 변경 전 화면](<../05-movie_search_engiene/capture/style 기존 화면.png>)
 
-## Notes
+![Style 변경 후 화면](<../05-movie_search_engiene/capture/style 수정 화면.png>)
 
-- Dependencies are installed separately in each project.
-- `node_modules` and generated build output should not be committed.
-- The movie project currently contains a TMDB API key in its source code. Before publishing this repository publicly, move that key to an environment variable and rotate the exposed key if it is active.
-- The music project includes bundled MP3 files for local demonstration. Confirm that you have permission to redistribute them before publishing this repository publicly.
-- The crypto project uses the free CoinPaprika API and may be affected by network availability, DNS issues, provider rate limits, or API changes.
-- These applications are learning exercises and can be extended with validation, persistence, tests, and improved accessibility.
+3. UI/Data: 현재 표시 중인 영화 개수 추가
+- 수정 파일 : Home.jsx
+- 변경 전: 검색창과 영화 목록만 표시.
+- 변경 후: 검색창 아래에 현재 표시 중인 영화: N편 문구를 추가.
 
-## License
+![UI/Data 변경 전 화면](<../05-movie_search_engiene/capture/ui 기존 화면.png>)
 
-This repository is a personal learning project. Add a license before redistributing the code.
+![UI/Data 변경 후 화면](<../05-movie_search_engiene/capture/ui 수정 화면.png>)
+
+## Deployment
+
+
+
+## Weekly Review
