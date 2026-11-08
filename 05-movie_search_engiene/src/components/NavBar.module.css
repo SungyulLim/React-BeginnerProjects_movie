@@ -38,7 +38,7 @@
 }
 
 .navbar_nav :global(.nav-link) {
-  color: #ffffff !important;
+  color: red !important;
   font-weight: 600;
   transition: color 160ms ease;
 }
