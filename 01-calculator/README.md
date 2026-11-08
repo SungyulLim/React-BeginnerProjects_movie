@@ -72,16 +72,24 @@ async function loadPopularMovies() {
 ![기존화면(text)](05-movie_search_engiene/capture/text 기존 화면.png)
 // 바뀐 사진 추가
 
-2. Style: 상단 메뉴 색상 변경
-- NavBar.module.css 
-- 배경색: 남색 #172554
-- 글자색: 흰색 #FFFFFF
-- 링크에 마우스를 올렸을 때: 연보라색 #C4B5FD
+2. Style — 상단 메뉴 색상 변경
+- 수정 파일: src/components/NavBar.module.css
+- 배경색: 어두운 반투명 배경 → 남색 #172554
+- 서비스 이름 글자색: #f2f7f3 → 흰색 #FFFFFF
+- 메뉴 기본 글자색: 회녹색 #a9beb9 → 검은색 black
+- 메뉴 강조색: 민트색 #9de2c4 → 연보라색 #c4b5fd
+- 메뉴에 마우스를 올리면 연보라색으로 표시되며, 홈 메뉴는 active 클래스가 있어 기본 상태에서도 연보라색으로 표시됨.
 
+//기존 화면
+//수정 화면
 
+3. UI/Data: 현재 표시 중인 영화 개수 추가
+- 수정 파일 : Home.jsx
+- 변경 전: 검색창과 영화 목록만 표시.
+- 변경 후: 검색창 아래에 현재 표시 중인 영화: N편 문구를 추가.
 
-
-
+// 기존 화면
+// 수정 화면 
 
 ## Deployment
 
